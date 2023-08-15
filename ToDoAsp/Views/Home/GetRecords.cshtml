@@ -1,0 +1,49 @@
+﻿@using ToDoAsp.Models.Records
+@model Record[]
+@{
+    Layout = null;
+}
+<DOCKTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <tilte>GetRecordsPage</tilte>
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </head>
+    <body class=" panel-body">
+        <h3 class="text-center">RECORDS:</h3>
+        <table>
+            <thead>
+                <tr><td>Execution Time</td><td>Data</td><td>Creation Time</td></tr>
+            </thead>
+            <tbody>
+                @foreach(var record in Model)
+                {
+                    <tr> 
+                        <td>@record.ExecutionTime</td>
+                        <td>@record.Data</td>
+                        <td>@record.CreationTime</td>
+                        <td>
+                            @using (Html.BeginForm("DeleteRecord", "Home", new { id = record.Id }, FormMethod.Post))
+                            {
+                                <button type="submit" class="btn btn-danger" title="Delete record" id="@record.Id">Delete</button>
+                            }                           
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("UpdateRecord", "Home", new { id = record.Id }, FormMethod.Get))
+                            {
+                                <button type="submit" class="btn btn-default" title="Update record" id="@record.Id">Update</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a asp-action="AddRecord" class="btn btn-default">Add Record</a>
+        </div>
+    </body>
+    </html>
+
+</DOCKTYPE>
+

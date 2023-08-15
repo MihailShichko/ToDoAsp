@@ -1,0 +1,27 @@
+﻿
+@model ToDoAsp.Models.Records.Record
+
+<DOCKTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>AddRecord</title>
+        <link rel="stylesheet" href="/lib/bootstrap//dist//css/bootstrap.min.css" />
+    </head>
+    <body class="panel-body">
+        <h3>Create Record</h3>
+        <form asp-action="AddRecord" method="post">
+            <div class="form-group">
+                <label asp-for="Data">Data</label>
+                <input type="text" required autocomplete="off" placeholder="Here you should write what do you want to do" asp-for="Data" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ExecutionTime">Execution Time</label>
+                <input type="date" required autocomplete="off" placeholder="Here you should write when do you want to do it"  asp-for="ExecutionTime" class="form-control" />
+            </div>
+            <button type="submit" class=" btn btn-primary">Add</button>
+            <a asp-action="GetRecords" class=" btn btn-default">Cancel</a>
+        </form>
+    </body>
+</html>
+</DOCKTYPE>
